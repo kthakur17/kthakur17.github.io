@@ -295,16 +295,6 @@
     object-fit: cover; object-position: center top;
     color: transparent; font-size: 0;
   }
-  /* placeholder shows only until you add a real photo (img has no/missing src) */
-  .portrait-ph {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 0.7rem; text-align: center; padding: 1.5rem;
-    color: var(--dim);
-  }
-  .portrait-ph .pi { font-size: 2.4rem; opacity: 0.6; }
-  .portrait-ph small { font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 1px; line-height: 1.5; }
-  .hero-portrait.has-photo .portrait-ph { display: none; }
   .portrait-frame-tag {
     position: absolute; left: -10px; top: 18px;
     background: var(--accent); color: #000;
@@ -555,7 +545,7 @@
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
   .contact-links { display: flex; flex-direction: column; gap: 0.9rem; }
   .clink { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.4rem; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--text); transition: border-color 0.25s, transform 0.25s, background 0.25s; }
-  .clink:hover { border-color: var(--accent); transform: translateX(6px); background: var(--panel-2); }
+  a.clink:hover { border-color: var(--accent); transform: translateX(6px); background: var(--panel-2); }
   .clink-ic { width: 44px; height: 44px; flex-shrink: 0; border-radius: 10px; background: rgba(200,255,0,0.08); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
   .clink-lbl { font-family: 'Space Mono', monospace; font-size: 0.64rem; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
   .clink-val { font-size: 0.95rem; font-weight: 500; }
@@ -639,7 +629,7 @@
         <span class="l2">SINGH</span>
       </h1>
       <div class="hero-sub">
-        <b>Developer</b><span class="sep">/</span><b>Mentor</b><span class="sep">/</span><b>Community&nbsp;Builder</b>
+        <b>.NET</b><span class="sep">/</span><b>Angular</b><span class="sep">/</span><b>AI&nbsp;Integration</b>
       </div>
       <div class="hero-cta">
         <a href="#contact" class="btn btn-primary">Let's Connect →</a>
@@ -650,20 +640,7 @@
     <div class="hero-portrait-wrap">
       <div class="portrait-frame-tag">.NET DEVELOPER</div>
       <div class="hero-portrait">
-        <!--
-          ┌─ PHOTO ───────────────────────────────────────────────────┐
-          │ This loads "kunal.jpg" from the SAME folder as this file.  │
-          │ Save your headshot into the Downloads folder named         │
-          │ exactly  kunal.jpg  and it appears automatically.          │
-          │ (To use a different name/path, just change src below.)     │
-          └────────────────────────────────────────────────────────────┘
-        -->
-        <img id="hero-portrait" src="kunal.jpg" alt="Kunal Singh"
-             onload="this.closest('.hero-portrait').classList.add('has-photo')" />
-        <div class="portrait-ph">
-          <div class="pi">👤</div>
-          <small>SAVE YOUR PHOTO AS<br/>kunal.jpg&nbsp; IN THIS FOLDER</small>
-        </div>
+        <img id="hero-portrait" src="kunal.jpg" alt="Portrait of Kunal Singh" />
       </div>
       <div class="portrait-meta">
         <div class="pm-num">2.5+</div>
@@ -682,16 +659,16 @@
     <h2 class="h-title reveal">About <em>Me</em></h2>
     <div class="about-grid">
       <div class="about-text reveal d1">
-        <p>I build software that works — and works well. As a <strong>Full Stack Developer</strong> skilled in C#, .NET, Angular, JavaScript, and jQuery, I turn messy, complex requirements into clean, scalable solutions across the full stack.</p>
-        <p>Front-end polish or back-end logic, I write code that's built to last. And I'm all-in on what's next: I build <strong>AI-driven solutions using Claude, MCP servers, and intelligent agents</strong>, putting automation to work on real problems.</p>
-        <p>I'm also a community-first developer — an active member of <strong>GDG Cloud Indore</strong> and a <strong>hackathon mentor</strong>, helping teams sharpen their ideas and ship under pressure. Relentlessly curious, always leveling up.</p>
+        <p>I build software that works — and works well. As a <strong>Full Stack .NET Developer</strong> at Workpulse Solutions, I've spent the last 2.5+ years building a multi-tenant enterprise SaaS platform with C#, .NET, Angular and SQL Server, turning messy, complex requirements into clean, scalable solutions.</p>
+        <p>I'm all-in on what's next, too: I build <strong>AI-driven solutions using Claude, MCP servers, and intelligent agents</strong>, including an invoice-automation workflow that pairs Azure Document Intelligence with Claude.</p>
+        <p>I'm also a community-first developer — a <strong>core member of GDG Indore</strong> since 2023 and a <strong>hackathon mentor</strong>, helping teams sharpen their ideas and ship under pressure. Relentlessly curious, always leveling up.</p>
       </div>
       <div class="about-highlights">
-        <div class="hl reveal d1"><span class="num">01</span><span>Full-stack across C#, .NET, Angular, JavaScript &amp; jQuery.</span></div>
-        <div class="hl reveal d1"><span class="num">02</span><span>Turning messy, complex requirements into clean, scalable solutions.</span></div>
-        <div class="hl reveal d2"><span class="num">03</span><span>Code built to last — front-end polish and solid back-end logic.</span></div>
-        <div class="hl reveal d2"><span class="num">04</span><span>AI-driven solutions with Claude, MCP servers &amp; intelligent agents.</span></div>
-        <div class="hl reveal d3"><span class="num">05</span><span>Community-first — GDG Cloud Indore member and hackathon mentor.</span></div>
+        <div class="hl reveal d1"><span class="num">01</span><span>700+ merged pull requests across 12+ modules of a production multi-tenant SaaS platform.</span></div>
+        <div class="hl reveal d1"><span class="num">02</span><span>Porting legacy .NET Framework modules to .NET 10.</span></div>
+        <div class="hl reveal d2"><span class="num">03</span><span>AI invoice automation with Azure Document Intelligence &amp; Claude.</span></div>
+        <div class="hl reveal d2"><span class="num">04</span><span>Promoted to .NET Developer in July 2026 — I review pull requests and mentor junior developers.</span></div>
+        <div class="hl reveal d3"><span class="num">05</span><span>Community-first — GDG Indore core member and hackathon mentor.</span></div>
       </div>
     </div>
   </div>
@@ -754,36 +731,55 @@
         <div class="proj-info">
           <div class="pcat">AI · Automation</div>
           <h3>AI Invoice Email Extraction</h3>
-          <p>An AI-powered pipeline that reads incoming vendor emails, parses invoice line-items with Claude / LLM extraction, and pushes structured data straight into the platform — replacing hours of manual data entry.</p>
-          <div class="proj-stack"><span>.NET</span><span>Claude / LLM</span><span>Angular</span><span>SQL Server</span></div>
-        </div>      </article>
+          <p>An AI-powered pipeline that reads incoming vendor emails, extracts invoice line-items with Azure Document Intelligence and Claude, and pushes structured data straight into the platform — replacing hours of manual data entry. I lead this workflow.</p>
+          <div class="proj-stack"><span>.NET</span><span>Azure Document Intelligence</span><span>Claude</span><span>Angular</span><span>SQL Server</span></div>
+        </div>
+        <div class="proj-action"><span class="proj-where">@ Workpulse</span></div>
+      </article>
 
       <article class="proj-card reveal d1" style="--pc: var(--accent-cyan)">
         <div class="proj-num">02</div>
+        <div class="proj-info">
+          <div class="pcat">Backend · Migration</div>
+          <h3>.NET 10 Migration</h3>
+          <p>Porting legacy .NET Framework modules of a multi-tenant SaaS platform to .NET 10 — rebuilding their APIs and data access on ASP.NET Core and EF Core.</p>
+          <div class="proj-stack"><span>.NET 10</span><span>ASP.NET Core</span><span>EF Core</span><span>SQL Server</span></div>
+        </div>
+        <div class="proj-action"><span class="proj-where">@ Workpulse</span></div>
+      </article>
+
+      <article class="proj-card reveal d2" style="--pc: var(--accent-violet)">
+        <div class="proj-num">03</div>
         <div class="proj-info">
           <div class="pcat">Enterprise · Multi-Tenant</div>
           <h3>Organization Settings Module</h3>
           <p>A multi-tenant organization-settings module for an enterprise SaaS platform — per-organization configuration with permission-aware controls surfaced consistently across the product.</p>
           <div class="proj-stack"><span>ASP.NET</span><span>Angular 21</span><span>Entity Framework</span><span>SQL Server</span></div>
-        </div>      </article>
+        </div>
+        <div class="proj-action"><span class="proj-where">@ Workpulse</span></div>
+      </article>
 
-      <article class="proj-card reveal d2" style="--pc: var(--accent-violet)">
-        <div class="proj-num">03</div>
+      <article class="proj-card reveal d3" style="--pc: var(--accent-pink)">
+        <div class="proj-num">04</div>
         <div class="proj-info">
           <div class="pcat">Enterprise · Access Control</div>
           <h3>User Management</h3>
           <p>A full user-management module — accounts, roles, and fine-grained permission controls — letting admins govern exactly who can access what across a multi-tenant enterprise platform.</p>
           <div class="proj-stack"><span>C#</span><span>Web API</span><span>Angular</span><span>SQL Server</span></div>
-        </div>      </article>
+        </div>
+        <div class="proj-action"><span class="proj-where">@ Workpulse</span></div>
+      </article>
 
-      <article class="proj-card reveal d3" style="--pc: var(--accent-pink)">
-        <div class="proj-num">04</div>
+      <article class="proj-card reveal" style="--pc: var(--accent)">
+        <div class="proj-num">05</div>
         <div class="proj-info">
           <div class="pcat">Backend · Search</div>
           <h3>Global Search</h3>
           <p>A fast, permission-aware global search across a large enterprise platform — surfacing records from sales, inventory, HR and more from a single query box.</p>
           <div class="proj-stack"><span>ASP.NET Web API</span><span>SQL Server</span><span>Angular</span></div>
-        </div>      </article>
+        </div>
+        <div class="proj-action"><span class="proj-where">@ Workpulse</span></div>
+      </article>
     </div>
   </div>
 </section>
@@ -798,34 +794,49 @@
         <div class="tl-dot">💼</div>
         <div class="tl-card">
           <div class="tl-top">
-            <div class="tl-role">Junior .NET Developer</div>
-            <div class="tl-period">Mar 2024 — Present</div>
+            <div class="tl-role">.NET Developer</div>
+            <div class="tl-period">Jul 2026 — Present</div>
           </div>
           <div class="tl-company">Workpulse Solutions · Full-time · Indore, India (On-site)</div>
           <ul>
-            <li>Developing and maintaining full-stack web applications using ASP.NET Core, MVC, and Angular.</li>
-            <li>Building and consuming RESTful Web APIs integrated with a SQL Server backend.</li>
-            <li>Implementing responsive UI components with Bootstrap, TypeScript, and Angular.</li>
-            <li>Collaborating with cross-functional teams in an Agile development environment.</li>
-            <li>Working with Azure cloud services for deployment and scaling of applications.</li>
-            <li>Writing clean, maintainable code following SOLID principles and best practices.</li>
+            <li>Promoted from Junior .NET Developer in July 2026.</li>
+            <li>Building REST APIs and Angular front ends on .NET, C# and SQL Server for a multi-tenant enterprise SaaS platform.</li>
+            <li>Leading an AI invoice-automation workflow built on Azure Document Intelligence and Claude.</li>
+            <li>Porting legacy .NET Framework modules to .NET 10.</li>
+            <li>Reviewing pull requests and mentoring the junior developers on my team.</li>
           </ul>
         </div>
       </div>
 
       <div class="tl-item reveal d1">
+        <div class="tl-dot">💻</div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div class="tl-role">Junior .NET Developer</div>
+            <div class="tl-period">Mar 2024 — Jul 2026</div>
+          </div>
+          <div class="tl-company">Workpulse Solutions · Full-time · Indore, India (On-site)</div>
+          <ul>
+            <li>Delivered full-stack features across 12+ product modules, including People/HR, Asset Management, Invoice Extraction, Form Builder, Audit and Knowledge.</li>
+            <li>Built RESTful Web APIs with ASP.NET MVC and Web API on a SQL Server backend.</li>
+            <li>Built reusable UI components and reporting with Angular, TypeScript and Bootstrap.</li>
+            <li>Worked in an Agile team with Azure DevOps for work tracking, CI/CD and Azure deployments.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item reveal d2">
         <div class="tl-dot">🌐</div>
         <div class="tl-card">
           <div class="tl-top">
-            <div class="tl-role">Community Volunteer</div>
-            <div class="tl-period">Jun 2025 — Present</div>
+            <div class="tl-role">Core Member</div>
+            <div class="tl-period">Jan 2023 — Present</div>
           </div>
-          <div class="tl-company">GDG Cloud Indore · Freelance · Indore, India</div>
+          <div class="tl-company">GDG Indore · Volunteer · Indore, India</div>
           <ul>
-            <li>Actively contributing to the Google Developer Group community in Indore.</li>
-            <li>Organizing and participating in tech events, hackathons, and knowledge-sharing sessions.</li>
-            <li>Engaging with the developer ecosystem around cloud, AI, and modern web technologies.</li>
-            <li>Helping connect developers with learning resources and networking opportunities.</li>
+            <li>Supporting cloud, AI and developer events with 1,000+ attendees across them.</li>
+            <li>Facilitating Google Cloud and AI workshops.</li>
+            <li>Mentoring hackathon teams and working with speakers, industry experts and volunteers on technical sessions.</li>
           </ul>
         </div>
       </div>
@@ -854,25 +865,34 @@
       </div>
     </div>
 
-    <h3 class="cert-head reveal">AI &amp; Automation <span class="ch-line"></span><span class="ch-count">04</span></h3>
+    <h3 class="cert-head reveal">AI &amp; Automation <span class="ch-line"></span><span class="ch-count">07</span></h3>
     <div class="cert-grid">
-      <a href="https://verify.skilljar.com/c/pn3miwrgtcxe" target="_blank" rel="noopener" class="cert-card reveal"><span class="cert-ic">🤖</span><div><div class="cert-name">Claude Code in Action <span class="verify">Verify ↗</span></div><div class="cert-sub">Anthropic · Feb 2026</div></div></a>
-      <div class="cert-card reveal d1"><span class="cert-ic">💬</span><div><div class="cert-name">Claude 101</div><div class="cert-sub">Anthropic</div></div></div>
-      <div class="cert-card reveal d2"><span class="cert-ic">🧭</span><div><div class="cert-name">2-Day AI PM Micro-Certification</div><div class="cert-sub">Product Space · Mar 2026</div></div></div>
-      <div class="cert-card reveal d3"><span class="cert-ic">🛠️</span><div><div class="cert-name">AI Tools Mastery Workshop</div><div class="cert-sub">Clapingo · Mar 2026</div></div></div>
+      <a href="https://www.credly.com/badges/66110054-1c70-48fb-96c2-2ed5e4bd0400/linked_in_profile" target="_blank" rel="noopener" class="cert-card reveal"><span class="cert-ic">🏅</span><div><div class="cert-name">Claude Partner Badge – Claude Code <span class="verify">Verify ↗</span></div><div class="cert-sub">Anthropic · Jul 2026</div></div></a>
+      <a href="https://verify.skilljar.com/c/z6xptrpvtk5k" target="_blank" rel="noopener" class="cert-card reveal d1"><span class="cert-ic">🔌</span><div><div class="cert-name">Building with the Claude API <span class="verify">Verify ↗</span></div><div class="cert-sub">Anthropic · May 2026</div></div></a>
+      <a href="https://verify.skilljar.com/c/9cn9vacnis2n" target="_blank" rel="noopener" class="cert-card reveal d2"><span class="cert-ic">🤖</span><div><div class="cert-name">Claude Code in Action <span class="verify">Verify ↗</span></div><div class="cert-sub">Anthropic · May 2026</div></div></a>
+      <a href="https://verify.skilljar.com/c/t7an4mt4gmph" target="_blank" rel="noopener" class="cert-card reveal d3"><span class="cert-ic">🧩</span><div><div class="cert-name">Introduction to Model Context Protocol <span class="verify">Verify ↗</span></div><div class="cert-sub">Anthropic · May 2026</div></div></a>
+      <a href="https://verify.skilljar.com/c/c3eekmr23vrx" target="_blank" rel="noopener" class="cert-card reveal"><span class="cert-ic">⚙️</span><div><div class="cert-name">Introduction to Agent Skills <span class="verify">Verify ↗</span></div><div class="cert-sub">Anthropic · May 2026</div></div></a>
+      <div class="cert-card reveal d1"><span class="cert-ic">🧭</span><div><div class="cert-name">2-Day AI PM Micro-Certification</div><div class="cert-sub">Product Space · Mar 2026</div></div></div>
+      <div class="cert-card reveal d2"><span class="cert-ic">🛠️</span><div><div class="cert-name">AI Tools Mastery Workshop</div><div class="cert-sub">Clapingo · Mar 2026</div></div></div>
     </div>
 
-    <h3 class="cert-head reveal">National AI Programs <span class="ch-line"></span><span class="ch-count">04</span></h3>
+    <h3 class="cert-head reveal">Cloud &amp; Azure <span class="ch-line"></span><span class="ch-count">02</span></h3>
     <div class="cert-grid">
-      <div class="cert-card reveal"><span class="cert-ic">🎖️</span><div><div class="cert-name">AI For All — AI Appreciate</div><div class="cert-sub">Intel × CBSE · 2026</div></div></div>
-      <div class="cert-card reveal d1"><span class="cert-ic">🧠</span><div><div class="cert-name">AI For All — AI Aware</div><div class="cert-sub">Intel × CBSE · 2025</div></div></div>
+      <a href="https://www.linkedin.com/learning/certificates/affe606b10930eb1e005265d04857be7317bdcd9f6f2391a946d492b44b3ff64" target="_blank" rel="noopener" class="cert-card reveal"><span class="cert-ic">☁️</span><div><div class="cert-name">Microsoft Azure AI Essentials Professional Certificate <span class="verify">Verify ↗</span></div><div class="cert-sub">Microsoft &amp; LinkedIn · Jun 2026</div></div></a>
+      <a href="https://www.linkedin.com/learning/certificates/9018b3c03e141af963700b07436ccf0fd2ed505073499f9160d993daf4964c3c" target="_blank" rel="noopener" class="cert-card reveal d1"><span class="cert-ic">📊</span><div><div class="cert-name">Azure AI Essentials: Workloads and Machine Learning on Azure <span class="verify">Verify ↗</span></div><div class="cert-sub">LinkedIn Learning · Jun 2026</div></div></a>
+    </div>
+
+    <h3 class="cert-head reveal">National AI Programs <span class="ch-line"></span><span class="ch-count">03</span></h3>
+    <div class="cert-grid">
+      <a href="https://ai-for-all.in/#/badge?id=U2FsdGVkX1p1L2u3SbpblLFXxYpZbuYB4kGLXmZ62GPd2Opvge1Q2u3A4l" target="_blank" rel="noopener" class="cert-card reveal"><span class="cert-ic">🎖️</span><div><div class="cert-name">AI For All — AI Appreciate <span class="verify">Verify ↗</span></div><div class="cert-sub">Intel × CBSE · 2026</div></div></a>
+      <a href="https://ai-for-all.in/#/badge?id=U2FsdGVkX19Sq7gbdZmVUiLShkeCyd6PbHWbgZfN3iUe1Q2u3A4l" target="_blank" rel="noopener" class="cert-card reveal d1"><span class="cert-ic">🧠</span><div><div class="cert-name">AI For All — AI Aware <span class="verify">Verify ↗</span></div><div class="cert-sub">Intel × CBSE · 2025</div></div></a>
       <div class="cert-card reveal d2"><span class="cert-ic">🇮🇳</span><div><div class="cert-name">Yuva AI for All</div><div class="cert-sub">NASSCOM FutureSkills · Mar 2026</div></div></div>
-      <div class="cert-card reveal d3"><span class="cert-ic">🎟️</span><div><div class="cert-name">AI Impact Summit 2026</div><div class="cert-sub">Industry Participant · Bharat</div></div></div>
     </div>
 
-    <h3 class="cert-head reveal">Web Development <span class="ch-line"></span><span class="ch-count">05</span></h3>
+    <h3 class="cert-head reveal">Web Development <span class="ch-line"></span><span class="ch-count">06</span></h3>
     <div class="cert-grid">
-      <div class="cert-card reveal"><span class="cert-ic">🅰️</span><div><div class="cert-name">Angular</div><div class="cert-sub">Infosys Springboard · Jul 2025</div></div></div>
+      <div class="cert-card reveal"><span class="cert-ic">🧱</span><div><div class="cert-name">.NET Full Stack Developer Certification</div><div class="cert-sub">Infosys Springboard · Jul 2026</div></div></div>
+      <div class="cert-card reveal d1"><span class="cert-ic">🅰️</span><div><div class="cert-name">Angular</div><div class="cert-sub">Infosys Springboard · Jul 2025</div></div></div>
       <div class="cert-card reveal d1"><span class="cert-ic">📜</span><div><div class="cert-name">JavaScript</div><div class="cert-sub">Infosys Springboard · Mar 2026</div></div></div>
       <div class="cert-card reveal d2"><span class="cert-ic">📄</span><div><div class="cert-name">HTML5 — The Language</div><div class="cert-sub">Infosys Springboard · Jan 2026</div></div></div>
       <div class="cert-card reveal d2"><span class="cert-ic">🎨</span><div><div class="cert-name">CSS3</div><div class="cert-sub">Infosys Springboard · Jan 2026</div></div></div>
@@ -891,7 +911,7 @@
         <a href="mailto:singhkunalthakur89@gmail.com" class="clink reveal"><div class="clink-ic">📧</div><div><div class="clink-lbl">Email</div><div class="clink-val">singhkunalthakur89@gmail.com</div></div></a>
         <a href="https://www.linkedin.com/in/kunal-singh-a066a22a0" target="_blank" rel="noopener" class="clink reveal d1"><div class="clink-ic">💼</div><div><div class="clink-lbl">LinkedIn</div><div class="clink-val">kunal-singh-a066a22a0</div></div></a>
         <a href="https://github.com/kthakur17" target="_blank" rel="noopener" class="clink reveal d2"><div class="clink-ic">🐙</div><div><div class="clink-lbl">GitHub</div><div class="clink-val">github.com/kthakur17</div></div></a>
-        <a href="#" class="clink reveal d3"><div class="clink-ic">📍</div><div><div class="clink-lbl">Location</div><div class="clink-val">Indore, Madhya Pradesh, India</div></div></a>
+        <div class="clink reveal d3"><div class="clink-ic">📍</div><div><div class="clink-lbl">Location</div><div class="clink-val">Indore, Madhya Pradesh, India</div></div></div>
       </div>
       <div class="contact-card reveal d1">
         <h3>Open to Opportunities 🚀</h3>
