@@ -58,8 +58,8 @@
     --r: 10px;
     transition: --r 0.5s var(--ease);
   }
-  html.cursor-big { --r: 90px; }
-  html.cursor-link { --r: 26px; }
+  html.cursor-big { --r: clamp(38px, 3.6vw, 52px); }
+  html.cursor-link { --r: 20px; }
   html.cursor-off { --r: 0px; }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
