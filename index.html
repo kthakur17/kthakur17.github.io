@@ -3,31 +3,61 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kunal Singh — Full Stack .NET Developer</title>
-<meta name="description" content="Kunal Singh, Full Stack .NET Developer in Indore, India. C#, .NET 10, Angular, SQL Server, Azure and AI integration with Claude." />
+<title>Kunal Singh — Software Engineer</title>
+<meta name="description" content="Kunal Singh, Software Engineer in Indore, India. Full-stack .NET, Angular, SQL Server, Azure and AI integration with Claude. Community builder, hackathon mentor and judge, building OrbitStack." />
 <meta name="theme-color" content="#0d0d0d" />
+<meta name="color-scheme" content="dark light" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Kunal Singh — Full Stack .NET Developer" />
-<meta property="og:description" content="C#, .NET 10, Angular, SQL Server, Azure and AI integration. Indore, India." />
+<meta property="og:title" content="Kunal Singh — Software Engineer" />
+<meta property="og:description" content="Build. Learn. Connect. Full-stack .NET, AI and community from Indore, India." />
 <meta property="og:url" content="https://kthakur17.github.io/" />
-<meta property="og:image" content="https://kthakur17.github.io/kunal.jpg" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23b7ab98'/%3E%3Ctext x='32' y='41' font-family='Arial' font-weight='700' font-size='24' text-anchor='middle' fill='%230d0d0d'%3EKS%3C/text%3E%3C/svg%3E" />
+<meta property="og:image" content="https://kthakur17.github.io/headshot.jpg" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23eb5939'/%3E%3Ctext x='32' y='41' font-family='Arial' font-weight='700' font-size='24' text-anchor='middle' fill='%230d0d0d'%3EKS%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Urbanist:wght@600;700;800&display=swap" rel="stylesheet" />
 <script>
-  document.documentElement.classList.add('js', 'is-loading');
-  setTimeout(function () { if (!window.__ksReady) { document.documentElement.classList.remove('js', 'is-loading'); } }, 6000);
+  (function () {
+    var root = document.documentElement, theme = null;
+    try { theme = localStorage.getItem('theme'); } catch (e) {}
+    if (theme !== 'light' && theme !== 'dark') {
+      theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    root.setAttribute('data-theme', theme);
+    root.classList.add('js', 'is-loading');
+    setTimeout(function () { if (!window.__ksReady) { root.classList.remove('js', 'is-loading'); } }, 6000);
+  })();
 </script>
 <style>
   @property --r { syntax: '<length>'; inherits: true; initial-value: 0px; }
 
-  :root {
+  :root, :root[data-theme="dark"] {
     --bg: #0d0d0d;
     --ink: #b7ab98;
-    --ink-dim: rgba(183, 171, 152, 0.55);
+    --ink-dim: rgba(183, 171, 152, 0.58);
     --line: rgba(183, 171, 152, 0.18);
+    --card: rgba(183, 171, 152, 0.05);
     --accent: #eb5939;
+    --accent-text: #eb5939;
+    --on-accent: #0d0d0d;
+  }
+  :root[data-theme="light"] {
+    --bg: #f2ede5;
+    --ink: #1c1916;
+    --ink-dim: rgba(28, 25, 22, 0.64);
+    --line: rgba(28, 25, 22, 0.14);
+    --card: rgba(28, 25, 22, 0.045);
+    --accent: #e0512f;
+    --accent-text: #b63a1c;
+    --on-accent: #0d0d0d;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+      --bg: #f2ede5; --ink: #1c1916; --ink-dim: rgba(28, 25, 22, 0.64); --line: rgba(28, 25, 22, 0.14);
+      --card: rgba(28, 25, 22, 0.045); --accent: #e0512f; --accent-text: #b63a1c;
+    }
+  }
+  :root {
     --head: 'Urbanist', 'Avant Garde', sans-serif;
     --body: 'Nunito Sans', sans-serif;
     --gut: clamp(16px, 5vw, 80px);
@@ -41,13 +71,14 @@
   html.cursor-off { --r: 0px; }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; background: var(--bg); }
   html:not(.lenis) { scroll-behavior: smooth; }
   html.lenis, html.lenis body { height: auto; }
   .lenis.lenis-smooth { scroll-behavior: auto !important; }
   .lenis.lenis-stopped { overflow: hidden; }
   html.is-loading body { overflow: hidden; }
-  ::selection { background: var(--accent); color: var(--bg); }
+  ::selection { background: var(--accent); color: var(--on-accent); }
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 
   body {
     background: var(--bg);
@@ -60,7 +91,9 @@
   }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 
   /* ---------- type ---------- */
   .label {
@@ -80,21 +113,25 @@
     line-height: 1.08; letter-spacing: -0.04em;
   }
   .accent { color: var(--accent); }
+  .accent-text { color: var(--accent-text); }
   .dim { color: var(--ink-dim); }
+  .mb-26 { margin-bottom: 26px; }
 
   /* ---------- sections + reveal layer ---------- */
   .sec { position: relative; }
   .sec-inner { position: relative; max-width: var(--maxw); margin: 0 auto; padding: clamp(96px, 13vw, 190px) var(--gut); }
   .sec-alt {
     position: absolute; inset: 0; z-index: 5;
-    background: var(--accent); color: var(--bg);
+    background: var(--accent); color: var(--on-accent);
     pointer-events: none; overflow: hidden;
     -webkit-mask-image: radial-gradient(circle at var(--x, -999px) var(--y, -999px), #000 var(--r), transparent calc(var(--r) + 1px));
     mask-image: radial-gradient(circle at var(--x, -999px) var(--y, -999px), #000 var(--r), transparent calc(var(--r) + 1px));
   }
-  .sec-alt * { color: var(--bg) !important; border-color: rgba(13, 13, 13, 0.25) !important; }
+  .sec-alt * { color: var(--on-accent) !important; border-color: rgba(13, 13, 13, 0.25) !important; background-color: transparent !important; }
+  .sec-alt .mods { background: rgba(13, 13, 13, 0.25) !important; }
+  .sec-alt .mod { background: var(--accent) !important; }
   .sec-alt img { filter: grayscale(1) contrast(1.1); mix-blend-mode: multiply; }
-  html.has-cursor .sec, html.has-cursor .sec a { cursor: none; }
+  html.has-cursor .sec, html.has-cursor .sec a, html.has-cursor .sec button { cursor: none; }
 
   .rv { transition: opacity 1s var(--ease), transform 1s var(--ease); }
   html.js .rv { opacity: 0; transform: translateY(40px); }
@@ -112,7 +149,7 @@
   .roll { display: inline-block; overflow: hidden; vertical-align: top; line-height: 1.15; height: 1.15em; }
   .roll-i { display: flex; flex-direction: column; transition: transform 0.55s var(--ease); }
   .roll-i > span { display: block; height: 1.15em; }
-  a:hover .roll-i, .ido-item:hover .roll-i, .roll-host:hover .roll-i { transform: translateY(-50%); }
+  a:hover .roll-i, .ido-item:hover .roll-i { transform: translateY(-50%); }
 
   /* ---------- preloader ---------- */
   .loader { display: none; }
@@ -139,32 +176,58 @@
   /* ---------- nav ---------- */
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 22px var(--gut);
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 20px var(--gut);
     pointer-events: none;
     transition: transform 0.6s var(--ease);
   }
   html.nav-hidden .nav { transform: translateY(-110%); }
+  html.nav-solid .nav {
+    background: color-mix(in srgb, var(--bg) 84%, transparent);
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    padding-block: 12px;
+  }
   .nav > * { pointer-events: auto; }
   .nav .mark { width: 44px; height: 44px; font-size: 0.9rem; transition: transform 0.4s var(--ease); }
   .nav .mark:hover { transform: rotate(-12deg) scale(1.06); }
-  .nav ul { display: flex; gap: clamp(18px, 3vw, 44px); list-style: none; }
-  .nav a.label { font-size: 0.74rem; color: var(--ink); mix-blend-mode: difference; }
+  .nav-right { display: flex; align-items: center; gap: clamp(14px, 3vw, 40px); }
+  .nav ul { display: flex; gap: clamp(14px, 2.6vw, 38px); list-style: none; }
+  .nav a.label { font-size: 0.72rem; }
+  .theme-btn {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid var(--line); display: grid; place-items: center;
+    background: var(--bg); transition: border-color 0.3s, transform 0.5s var(--ease);
+  }
+  .theme-btn:hover { border-color: var(--accent); transform: rotate(-20deg); }
+  .theme-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+  .theme-btn .sun { display: none; }
+  :root[data-theme="dark"] .theme-btn .sun { display: block; }
+  :root[data-theme="dark"] .theme-btn .moon { display: none; }
 
   /* ---------- hero ---------- */
   .hero .sec-inner { min-height: 100svh; display: grid; place-items: center; text-align: center; padding-top: 120px; padding-bottom: 120px; }
   .hero-portrait {
-    width: clamp(92px, 9vw, 124px); aspect-ratio: 1; border-radius: 50%; overflow: hidden;
-    margin: 0 auto 28px; border: 1px solid var(--line);
+    position: relative;
+    width: clamp(124px, 12vw, 168px); aspect-ratio: 1; border-radius: 50%; overflow: hidden;
+    margin: 0 auto 26px; border: 2px solid var(--line);
+    box-shadow: 0 0 0 6px var(--bg), 0 0 0 7px var(--line);
+    transition: border-color 0.4s, box-shadow 0.4s;
   }
-  .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; filter: grayscale(1); transition: filter 0.6s var(--ease); }
-  .hero-portrait:hover img { filter: none; }
-  .hero .label { margin-bottom: 26px; }
-  .hero .h1 { font-size: clamp(2.6rem, min(13.5vw, 12.5svh), 8.5rem); }
+  .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 24%; transform: scale(1.32); transform-origin: 50% 26%; transition: transform 0.8s var(--ease); }
+  .hero-portrait:hover { border-color: var(--accent); box-shadow: 0 0 0 6px var(--bg), 0 0 0 7px var(--accent); }
+  .hero-portrait:hover img { transform: scale(1.42); }
+  .hero-name {
+    font-family: var(--head); font-weight: 800; text-transform: uppercase;
+    font-size: clamp(1.45rem, 3.3vw, 2.75rem); line-height: 1.1;
+    letter-spacing: 0.28em; padding-left: 0.28em;
+    margin-bottom: clamp(18px, 2.4vw, 28px);
+  }
+  .hero .h1 { font-size: clamp(2.6rem, min(13.5vw, 10.8svh), 8.5rem); }
   .hero .h1 span { display: block; }
-  .hero-meta { margin-top: 40px; display: flex; gap: 10px 28px; justify-content: center; flex-wrap: wrap; }
+  .hero-meta { margin-top: 36px; display: flex; gap: 10px 28px; justify-content: center; flex-wrap: wrap; }
   .hero-meta .label { margin: 0; font-size: 0.7rem; letter-spacing: 0.35em; color: var(--ink-dim); }
-  .scroll-cue { position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%); width: 1px; height: 54px; background: var(--line); overflow: hidden; }
+  .scroll-cue { position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); width: 1px; height: 54px; background: var(--line); overflow: hidden; }
   .scroll-cue::after { content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 18px; background: var(--ink); animation: cue 2s var(--ease) infinite; }
   @keyframes cue { 0% { transform: translateY(-18px); } 70%, 100% { transform: translateY(56px); } }
 
@@ -186,6 +249,20 @@
   .lead { max-width: 980px; margin: 0 auto; }
   .lead .label { margin-bottom: 30px; }
   .lead + * { margin-top: clamp(64px, 9vw, 130px); }
+  .block + .block { margin-top: clamp(72px, 9vw, 120px); }
+
+  /* ---------- about: portrait + numbers ---------- */
+  .about-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  .about-photo { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 5; border: 1px solid var(--line); }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; transition: transform 1.2s var(--ease); }
+  .about-photo:hover img { transform: scale(1.04); }
+  .about-photo figcaption { position: absolute; left: 16px; bottom: 16px; background: var(--accent); color: var(--on-accent); border-radius: 100px; padding: 6px 14px; font-size: 0.66rem; letter-spacing: 0.25em; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+  .stat { padding: clamp(22px, 3vw, 36px) 0; border-bottom: 1px solid var(--line); }
+  .stat:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--line); }
+  .stat:nth-child(even) { padding-left: clamp(18px, 3vw, 36px); }
+  .stat-val { font-family: var(--head); font-weight: 800; font-size: clamp(2.6rem, 6vw, 5rem); line-height: 1; letter-spacing: -0.05em; }
+  .stat-lbl { margin-top: 10px; color: var(--ink-dim); font-size: 0.98rem; max-width: 240px; }
 
   /* ---------- what I do ---------- */
   .ido { list-style: none; border-bottom: 1px solid var(--line); }
@@ -197,37 +274,39 @@
   .ido-item p { font-size: clamp(1rem, 1.3vw, 1.15rem); color: var(--ink-dim); max-width: 440px; padding-bottom: 0.5em; }
   .ido-item p::before { content: '— '; color: var(--accent); }
 
-  /* ---------- history ---------- */
-  .hist-head { display: flex; justify-content: space-between; margin-bottom: 26px; }
-  .hist { list-style: none; border-bottom: 1px solid var(--line); }
-  .hist li {
-    display: grid; grid-template-columns: 130px 1fr auto; gap: 8px 32px; align-items: baseline;
-    padding: 28px 0; border-top: 1px solid var(--line);
-  }
-  .hist .label { font-size: 0.72rem; letter-spacing: 0.3em; }
-  .hist h3 { font-family: var(--head); font-weight: 700; font-size: clamp(1.3rem, 2.6vw, 2.1rem); letter-spacing: -0.03em; line-height: 1.15; }
-  .hist .org { color: var(--ink-dim); text-align: right; }
-  .hist .note { grid-column: 2 / -1; color: var(--ink-dim); font-size: 0.98rem; max-width: 720px; }
+  /* ---------- workpulse modules ---------- */
+  .mods { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
+  .mod { background: var(--bg); padding: clamp(26px, 3vw, 38px); display: flex; flex-direction: column; gap: 14px; transition: background-color 0.4s; }
+  .mod:hover { background: var(--card); }
+  .mod-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .mod-top .label { font-size: 0.68rem; letter-spacing: 0.3em; color: var(--ink-dim); }
+  .mod-tag { font-family: var(--head); font-weight: 700; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-text); border: 1px solid var(--line); border-radius: 100px; padding: 3px 10px; white-space: nowrap; }
+  .mod h3 { font-family: var(--head); font-weight: 800; text-transform: uppercase; font-size: clamp(1.45rem, 2.3vw, 1.9rem); letter-spacing: -0.04em; line-height: 1.02; }
+  .mod p { color: var(--ink-dim); font-size: 0.98rem; }
+  .mod ul { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: auto; padding-top: 6px; }
+  .mod li { font-size: 0.92rem; padding-left: 18px; position: relative; }
+  .mod li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 8px; height: 2px; background: var(--accent); }
 
-  /* ---------- projects ---------- */
+  /* ---------- link rows: projects ---------- */
   .proj { list-style: none; border-bottom: 1px solid var(--line); }
   .proj li { border-top: 1px solid var(--line); }
-  .proj-row { display: grid; grid-template-columns: 64px 1fr; gap: 6px 24px; padding: clamp(26px, 3.2vw, 42px) 0; }
+  .proj-row { display: grid; grid-template-columns: 64px 1fr auto; gap: 6px 24px; padding: clamp(26px, 3.2vw, 42px) 0; }
   .proj-num { font-family: var(--head); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.3em; padding-top: 0.9em; color: var(--ink-dim); }
   .proj-name {
     font-family: var(--head); font-weight: 800; text-transform: uppercase;
-    font-size: clamp(2rem, 6.6vw, 5.8rem); line-height: 0.95; letter-spacing: -0.05em;
+    font-size: clamp(2rem, 6.4vw, 5.6rem); line-height: 0.95; letter-spacing: -0.05em;
     transition: transform 0.6s var(--ease), color 0.4s;
   }
   .proj-row:hover .proj-name { transform: translateX(clamp(8px, 2vw, 28px)); color: var(--accent); }
-  .proj-desc { grid-column: 2; color: var(--ink-dim); max-width: 640px; margin-top: 10px; }
-  .proj-stack { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 12px; }
+  .proj-go { grid-row: 1; grid-column: 3; align-self: center; font-family: var(--head); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent-text); white-space: nowrap; }
+  .proj-desc { grid-column: 2 / -1; color: var(--ink-dim); max-width: 680px; margin-top: 10px; }
+  .proj-stack { grid-column: 2 / -1; display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 12px; }
   .proj-stack span { font-family: var(--head); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; }
 
   .pcard {
     position: fixed; left: 0; top: 0; z-index: 40; pointer-events: none;
     width: 300px; padding: 26px; border-radius: 18px;
-    background: var(--accent); color: var(--bg);
+    background: var(--accent); color: var(--on-accent);
     opacity: 0; transform: translate3d(-50%, -50%, 0) scale(0.6);
     transition: opacity 0.35s var(--ease);
   }
@@ -238,19 +317,56 @@
   .pcard-stack span { border: 1px solid rgba(13, 13, 13, 0.35); border-radius: 100px; padding: 3px 10px; font-size: 0.75rem; font-weight: 700; }
   .pcard-where { margin-top: 22px; font-size: 0.8rem; font-weight: 700; }
 
+  /* ---------- community ---------- */
+  .roles { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 24px); }
+  .role-card { border: 1px solid var(--line); border-radius: 22px; padding: clamp(26px, 3.4vw, 44px); display: flex; flex-direction: column; gap: 16px; transition: border-color 0.4s, background-color 0.4s; }
+  .role-card:hover { border-color: var(--accent); background: var(--card); }
+  .role-card .label { font-size: 0.68rem; letter-spacing: 0.3em; color: var(--accent-text); }
+  .role-card h3 { font-family: var(--head); font-weight: 800; text-transform: uppercase; font-size: clamp(2rem, 4.4vw, 3.6rem); letter-spacing: -0.05em; line-height: 0.95; }
+  .role-card .role-title { font-family: var(--head); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; }
+  .role-card p { color: var(--ink-dim); }
+  .role-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .role-card li { padding-left: 18px; position: relative; font-size: 0.96rem; }
+  .role-card li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 8px; height: 2px; background: var(--accent); }
+  .role-link { margin-top: auto; padding-top: 8px; font-family: var(--head); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent-text); }
+  .role-link:hover { color: var(--accent); }
+
+  .impact { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--line); }
+  .impact > div { padding: clamp(22px, 3vw, 34px) clamp(12px, 2vw, 24px); border-right: 1px solid var(--line); }
+  .impact > div:first-child { padding-left: 0; }
+  .impact > div:last-child { border-right: 0; }
+  .impact .stat-val { font-size: clamp(2.2rem, 4.6vw, 4rem); }
+  .impact .stat-lbl { font-size: 0.92rem; }
+
+  /* ---------- timeline rows (events + history) ---------- */
+  .hist-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 26px; }
+  .hist-head a.label { font-size: 0.7rem; letter-spacing: 0.3em; color: var(--accent-text); }
+  .hist { list-style: none; border-bottom: 1px solid var(--line); }
+  .hist li {
+    display: grid; grid-template-columns: 130px 1fr auto; gap: 8px 32px; align-items: baseline;
+    padding: 26px 0; border-top: 1px solid var(--line);
+  }
+  .hist .label { font-size: 0.72rem; letter-spacing: 0.3em; }
+  .hist h3 { font-family: var(--head); font-weight: 700; font-size: clamp(1.3rem, 2.6vw, 2.1rem); letter-spacing: -0.03em; line-height: 1.15; }
+  .hist .org { color: var(--ink-dim); text-align: right; }
+  .hist .note { grid-column: 2 / -1; color: var(--ink-dim); font-size: 0.98rem; max-width: 760px; }
+  .events li { padding: 22px 0; }
+  .events h3 { font-size: clamp(1.15rem, 2vw, 1.6rem); }
+
   /* ---------- certifications ---------- */
   .certs { list-style: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; }
   .certs li { border-top: 1px solid var(--line); }
   .certs a, .certs .cert { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: center; padding: 22px 0; }
   .cert-name { font-family: var(--head); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; line-height: 1.25; }
   .cert-meta { grid-column: 1; font-size: 0.7rem; letter-spacing: 0.25em; color: var(--ink-dim); }
-  .cert-go { grid-row: 1 / span 2; grid-column: 2; font-family: var(--head); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); }
+  .cert-go { grid-row: 1 / span 2; grid-column: 2; font-family: var(--head); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent-text); }
   .certs a:hover .cert-name { color: var(--accent); }
 
   /* ---------- motto ---------- */
   .motto .sec-inner { text-align: center; }
-  .motto-bg { position: absolute; inset: 0; background: radial-gradient(60% 70% at 50% 50%, rgba(183, 171, 152, 0.09), transparent 70%); pointer-events: none; }
+  .motto-bg { position: absolute; inset: 0; background: radial-gradient(60% 70% at 50% 50%, var(--card), transparent 70%); pointer-events: none; }
   .motto .h1 { font-size: clamp(2.4rem, 8vw, 7rem); line-height: 0.9; max-width: 1100px; margin: 22px auto 0; }
+  .motto-sub { margin-top: clamp(22px, 3vw, 36px); font-size: clamp(1.05rem, 1.6vw, 1.35rem); color: var(--ink-dim); }
   .motto .wd { display: inline-block; white-space: nowrap; }
   .motto .c { display: inline-block; }
   html.js .motto .c { opacity: 0; transform: perspective(600px) rotateX(-90deg) translateY(30%); transform-origin: 50% 100%; transition: opacity 0.6s var(--ease), transform 0.9s var(--ease); transition-delay: calc(var(--ci) * 18ms); }
@@ -270,20 +386,34 @@
   .foot a.label:hover { color: var(--ink); }
 
   /* ---------- responsive ---------- */
+  @media (max-width: 960px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-photo { max-width: 420px; }
+    .roles { grid-template-columns: 1fr; }
+    .impact { grid-template-columns: 1fr 1fr; }
+    .impact > div:nth-child(2) { border-right: 0; }
+    .impact > div:nth-child(3) { padding-left: 0; }
+    .impact > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  }
   @media (max-width: 860px) {
     .ido-item { grid-template-columns: 1fr; }
     .hist li { grid-template-columns: 1fr; gap: 6px; }
     .hist .org { text-align: left; }
     .hist .note { grid-column: 1; }
     .certs { grid-template-columns: 1fr; }
+    .nav .opt { display: none; }
   }
   @media (max-width: 560px) {
     .label { letter-spacing: 0.3em; }
-    .nav ul { gap: 14px; }
-    .nav a.label { font-size: 0.66rem; letter-spacing: 0.22em; }
+    .nav ul { gap: 12px; }
+    .nav a.label { font-size: 0.64rem; letter-spacing: 0.2em; }
+    .nav .mark, .theme-btn { width: 40px; height: 40px; }
+    .nav-right { gap: 12px; }
     .proj-row { grid-template-columns: 1fr; }
     .proj-num { padding-top: 0; }
+    .proj-go { grid-row: auto; grid-column: 1; margin-top: 12px; }
     .proj-desc, .proj-stack { grid-column: 1; }
+    .stat:nth-child(odd) { padding-right: 14px; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
@@ -302,11 +432,19 @@
 
 <nav class="nav" aria-label="Main">
   <a href="#top" class="mark" aria-label="Kunal Singh, back to top">KS</a>
-  <ul>
-    <li><a class="label" href="#about"><span class="roll"><span class="roll-i"><span>About</span><span>About</span></span></span></a></li>
-    <li><a class="label" href="#work"><span class="roll"><span class="roll-i"><span>Work</span><span>Work</span></span></span></a></li>
-    <li><a class="label" href="#contact"><span class="roll"><span class="roll-i"><span>Contact</span><span>Contact</span></span></span></a></li>
-  </ul>
+  <div class="nav-right">
+    <ul>
+      <li><a class="label" href="#about"><span class="roll"><span class="roll-i"><span>About</span><span>About</span></span></span></a></li>
+      <li><a class="label" href="#work"><span class="roll"><span class="roll-i"><span>Work</span><span>Work</span></span></span></a></li>
+      <li class="opt"><a class="label" href="#projects"><span class="roll"><span class="roll-i"><span>Projects</span><span>Projects</span></span></span></a></li>
+      <li class="opt"><a class="label" href="#community"><span class="roll"><span class="roll-i"><span>Community</span><span>Community</span></span></span></a></li>
+      <li><a class="label" href="#contact"><span class="roll"><span class="roll-i"><span>Contact</span><span>Contact</span></span></span></a></li>
+    </ul>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch colour theme">
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" /><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" /></svg>
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1Z" /></svg>
+    </button>
+  </div>
 </nav>
 
 <main>
@@ -314,8 +452,8 @@
   <section class="sec hero" id="top" data-sec>
     <div class="sec-inner">
       <div data-cursor>
-        <div class="hero-portrait rv"><img src="kunal.jpg" alt="Portrait of Kunal Singh" /></div>
-        <p class="label rv d1" data-alt="Also answers to “the .NET guy”">Kunal Singh</p>
+        <div class="hero-portrait rv"><img src="headshot.jpg" alt="Portrait of Kunal Singh" width="1120" height="1400" /></div>
+        <p class="hero-name rv d1" data-alt="The .NET guy">Kunal Singh</p>
         <h1 class="h1">
           <span data-alt="Debugging">Shipping</span>
           <span class="accent" data-alt="Production">Production</span>
@@ -324,8 +462,10 @@
           <span class="accent" data-alt="AM">2024</span>
         </h1>
         <div class="hero-meta rv d3">
-          <span class="label">Full Stack .NET Developer</span>
-          <span class="label">Indore, India</span>
+          <span class="label">Software Engineer</span>
+          <span class="label">AI &amp; Emerging Tech</span>
+          <span class="label">Community Builder</span>
+          <span class="label">Building OrbitStack</span>
         </div>
       </div>
       <span class="scroll-cue" aria-hidden="true"></span>
@@ -334,8 +474,8 @@
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>C#</span><i>✦</i><span>.NET 10</span><i>✦</i><span>ASP.NET Core</span><i>✦</i><span>Angular</span><i>✦</i><span>TypeScript</span><i>✦</i><span>SQL Server</span><i>✦</i><span>EF Core</span><i>✦</i><span>Azure</span><i>✦</i><span>Claude</span><i>✦</i><span>MCP</span><i>✦</i>
-      <span>C#</span><i>✦</i><span>.NET 10</span><i>✦</i><span>ASP.NET Core</span><i>✦</i><span>Angular</span><i>✦</i><span>TypeScript</span><i>✦</i><span>SQL Server</span><i>✦</i><span>EF Core</span><i>✦</i><span>Azure</span><i>✦</i><span>Claude</span><i>✦</i><span>MCP</span><i>✦</i>
+      <span>C#</span><i>✦</i><span>.NET 10</span><i>✦</i><span>ASP.NET Core</span><i>✦</i><span>Angular</span><i>✦</i><span>TypeScript</span><i>✦</i><span>SQL Server</span><i>✦</i><span>EF Core</span><i>✦</i><span>Azure</span><i>✦</i><span>Claude</span><i>✦</i><span>MCP</span><i>✦</i><span>Next.js</span><i>✦</i>
+      <span>C#</span><i>✦</i><span>.NET 10</span><i>✦</i><span>ASP.NET Core</span><i>✦</i><span>Angular</span><i>✦</i><span>TypeScript</span><i>✦</i><span>SQL Server</span><i>✦</i><span>EF Core</span><i>✦</i><span>Azure</span><i>✦</i><span>Claude</span><i>✦</i><span>MCP</span><i>✦</i><span>Next.js</span><i>✦</i>
     </div>
   </div>
 
@@ -343,11 +483,24 @@
     <div class="sec-inner">
       <div class="lead" data-cursor>
         <p class="label rv">About me</p>
-        <p class="h2" data-words data-alt="Translation: I turn tickets into pull requests, and pull requests into features people use every day. Seven hundred times and counting, and I still read the error message before I search it.">I'm a full-stack .NET developer in Indore. For 2.5+ years I've been building a multi-tenant enterprise SaaS platform at Workpulse Solutions: 700+ merged pull requests across 12+ modules, from Angular screens to .NET 10 APIs.</p>
+        <p class="h2" data-words data-alt="Translation: I turn tickets into pull requests, and pull requests into features people use every day. Seven hundred times and counting, and I still read the error message before I search it.">I'm a full-stack .NET developer in Indore. For 2.5+ years I've been building a multi-tenant enterprise SaaS platform at Workpulse Solutions, from Angular screens to .NET 10 APIs. Outside work, I help run developer communities.</p>
       </div>
 
-      <div>
-        <p class="label rv" style="margin-bottom:26px">What I do</p>
+      <div class="block about-grid">
+        <figure class="about-photo rv">
+          <img src="kunal.jpg" alt="Kunal Singh, arms crossed, in a grey blazer" width="1060" height="1484" loading="lazy" />
+          <figcaption class="label">Indore, India</figcaption>
+        </figure>
+        <div class="stats" data-cursor>
+          <div class="stat rv"><div class="stat-val accent" data-count="2.5" data-suffix="+">2.5+</div><p class="stat-lbl">years building a production SaaS platform</p></div>
+          <div class="stat rv d1"><div class="stat-val" data-count="700" data-suffix="+">700+</div><p class="stat-lbl">merged pull requests</p></div>
+          <div class="stat rv d2"><div class="stat-val" data-count="1300" data-suffix="+">1,300+</div><p class="stat-lbl">commits to the platform since May 2024</p></div>
+          <div class="stat rv d3"><div class="stat-val accent" data-count="12" data-suffix="+">12+</div><p class="stat-lbl">product modules I've delivered features in</p></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <p class="label rv mb-26">What I do</p>
         <ul class="ido">
           <li class="ido-item rv" data-cursor>
             <h3><span class="roll"><span class="roll-i"><span>Backend</span><span class="accent">Backend</span></span></span></h3>
@@ -355,20 +508,228 @@
           </li>
           <li class="ido-item rv" data-cursor>
             <h3><span class="roll"><span class="roll-i"><span>Frontend</span><span class="accent">Frontend</span></span></span></h3>
-            <p data-alt="Pushing pixels until the grid stops wobbling.">Angular and TypeScript interfaces, from dashboards to data-heavy grids.</p>
+            <p data-alt="Pushing pixels until the grid stops wobbling.">Angular and TypeScript interfaces, from dashboards to data-heavy grids, plus Next.js on my own projects.</p>
           </li>
           <li class="ido-item rv" data-cursor>
             <h3><span class="roll"><span class="roll-i"><span>AI</span><span class="accent">AI</span></span></span></h3>
-            <p data-alt="Teaching Claude to read invoices so people don't have to.">LLM workflows with Claude, MCP servers and Azure Document Intelligence.</p>
+            <p data-alt="Teaching Claude to read invoices so people don't have to.">LLM workflows with Claude, MCP servers and Azure Document Intelligence, and AI coding agents on a real codebase.</p>
           </li>
           <li class="ido-item rv" data-cursor>
             <h3><span class="roll"><span class="roll-i"><span>Cloud</span><span class="accent">Cloud</span></span></span></h3>
-            <p data-alt="Green pipelines. Or green by Friday, at least.">Azure, Azure DevOps pipelines and Azure SQL.</p>
+            <p data-alt="Green pipelines. Or green by Friday, at least.">Azure, Azure DevOps pipelines and Azure SQL; Vercel for my side projects.</p>
           </li>
           <li class="ido-item rv" data-cursor>
-            <h3><span class="roll"><span class="roll-i"><span>Migration</span><span class="accent">Migration</span></span></span></h3>
-            <p data-alt="Moving old code into the future, one module at a time.">Porting legacy .NET Framework modules to .NET 10.</p>
+            <h3><span class="roll"><span class="roll-i"><span>Community</span><span class="accent">Community</span></span></span></h3>
+            <p data-alt="Making rooms where nobody is too shy to ask the question.">Hackathon mentoring and judging, talks, and running events with GDG Indore and OrbitStack.</p>
           </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="work" data-sec>
+    <div class="sec-inner">
+      <div class="lead" data-cursor>
+        <p class="label rv">At Workpulse</p>
+        <p class="h2" data-words data-alt="Twelve modules, one codebase, and a lot of coffee. Every card below shipped to real users.">The functionality I've delivered across Workpulse's multi-tenant enterprise platform, from AI pipelines to mobile APIs. It lives behind a login, so here's what each part does.</p>
+      </div>
+
+      <div class="mods">
+        <article class="mod rv">
+          <div class="mod-top"><span class="label">01</span><span class="mod-tag">AI · Lead</span></div>
+          <h3>AI Invoice Extraction</h3>
+          <p>Turns vendor invoices from email into structured records with Azure Document Intelligence and Claude.</p>
+          <ul><li>Learning loop: vendor keys and corrections feed back into extraction</li><li>Review workbench for unmapped invoices</li><li>Recovers serials, totals and invoice numbers from .docx files</li></ul>
+        </article>
+        <article class="mod rv d1">
+          <div class="mod-top"><span class="label">02</span><span class="mod-tag">Operations</span></div>
+          <h3>Asset Management</h3>
+          <p>Asset records, onboarding and service history for multi-location organisations.</p>
+          <ul><li>Service logs with voice notes and video</li><li>Onboarding that creates missing assets and providers from invoices</li><li>Bulk upload and permission-based menus</li></ul>
+        </article>
+        <article class="mod rv d2">
+          <div class="mod-top"><span class="label">03</span><span class="mod-tag">HR</span></div>
+          <h3>People</h3>
+          <p>Employee feedback, development and dashboards.</p>
+          <ul><li>People Feedback with tabular view and detail panel</li><li>Employee Dashboard and People Pathway</li><li>Assessments and People Lite</li></ul>
+        </article>
+        <article class="mod rv">
+          <div class="mod-top"><span class="label">04</span><span class="mod-tag">Platform</span></div>
+          <h3>Form Builder</h3>
+          <p>The engine behind audits, assessments and quizzes.</p>
+          <ul><li>Advanced settings and a four-level question hierarchy</li><li>Scoring, math operations and AI-generated scoring forms</li><li>Bulk operations on form details</li></ul>
+        </article>
+        <article class="mod rv d1">
+          <div class="mod-top"><span class="label">05</span><span class="mod-tag">Learning</span></div>
+          <h3>Quiz</h3>
+          <p>Quizzes for teams, on web and mobile.</p>
+          <ul><li>Quiz taker, publishing and review screens</li><li>Redesigned quiz reports</li><li>Migrated legacy quizzes onto the shared form engine</li></ul>
+        </article>
+        <article class="mod rv d2">
+          <div class="mod-top"><span class="label">06</span><span class="mod-tag">Compliance</span></div>
+          <h3>Audit</h3>
+          <p>Scheduled and ad-hoc audits with reporting.</p>
+          <ul><li>Ad-hoc audits and web submission</li><li>Audit dashboard, summary and comparison reports</li><li>Restricted-word filter and a scheduled cleanup job</li></ul>
+        </article>
+        <article class="mod rv">
+          <div class="mod-top"><span class="label">07</span><span class="mod-tag">Service</span></div>
+          <h3>Desk Ticketing</h3>
+          <p>Tickets and complaints from creation to completion.</p>
+          <ul><li>Ticket detail view with full activity</li><li>Completion reports with time-zone support</li><li>Expense reconciliation against asset service logs</li></ul>
+        </article>
+        <article class="mod rv d1">
+          <div class="mod-top"><span class="label">08</span><span class="mod-tag">Access</span></div>
+          <h3>User Management</h3>
+          <p>Who can do what, across every organisation.</p>
+          <ul><li>New user management screens</li><li>Manager hierarchy</li><li>Role and location assignment</li></ul>
+        </article>
+        <article class="mod rv d2">
+          <div class="mod-top"><span class="label">09</span><span class="mod-tag">Mobile</span></div>
+          <h3>Mobile WebView APIs</h3>
+          <p>The APIs behind the platform's mobile app screens.</p>
+          <ul><li>Form submission and template APIs</li><li>Login and dashboard endpoints</li><li>Quiz and report screens inside the apps</li></ul>
+        </article>
+        <article class="mod rv">
+          <div class="mod-top"><span class="label">10</span><span class="mod-tag">Backend</span></div>
+          <h3>.NET 10 Migration</h3>
+          <p>Moving legacy .NET Framework modules to .NET 10.</p>
+          <ul><li>APIs rebuilt on ASP.NET Core</li><li>Data access moved to EF Core</li></ul>
+        </article>
+        <article class="mod rv d1">
+          <div class="mod-top"><span class="label">11</span><span class="mod-tag">Platform</span></div>
+          <h3>Org Settings &amp; Search</h3>
+          <p>Per-organisation configuration and one search box for everything.</p>
+          <ul><li>Permission-aware organisation settings</li><li>Global search across sales, inventory, HR and more</li></ul>
+        </article>
+        <article class="mod rv d2">
+          <div class="mod-top"><span class="label">12</span><span class="mod-tag">AI Tooling</span></div>
+          <h3>Developer Tooling</h3>
+          <p>Claude Code skills and guides that the team uses day to day.</p>
+          <ul><li>Automated pre-merge integration checks</li><li>Codebase guides that keep AI agents on the team's patterns</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="projects" data-sec>
+    <div class="sec-inner">
+      <div class="lead" data-cursor>
+        <p class="label rv">My projects</p>
+        <p class="h2" data-words data-alt="What I build when nobody assigns me a ticket. Most of them started as a problem a community had.">Things I've built outside work, mostly for the communities I'm part of. Every one is live or public.</p>
+      </div>
+
+      <ul class="proj">
+        <li class="rv">
+          <a class="proj-row" href="https://eventkit-nu.vercel.app" target="_blank" rel="noopener" data-cat="Tool · Events" data-stack="Next.js 16|TypeScript|Vercel" data-where="Live ↗ eventkit-nu.vercel.app">
+            <span class="proj-num">01</span>
+            <h3 class="proj-name">EventKit</h3>
+            <span class="proj-go">Live ↗</span>
+            <p class="proj-desc">Free, no-signup tools for community event organisers: certificates, badges, QR check-in and speaker cards. Everything runs in the browser, so attendee lists never leave the organiser's device.</p>
+            <div class="proj-stack"><span>Next.js 16</span><span>TypeScript</span><span>Vercel</span></div>
+          </a>
+        </li>
+        <li class="rv">
+          <a class="proj-row" href="https://github.com/kthakur17/hirechain" target="_blank" rel="noopener" data-cat="Web3 · Agents" data-stack="TypeScript|Avalanche|x402|ERC-8004" data-where="GitHub ↗ kthakur17/hirechain">
+            <span class="proj-num">02</span>
+            <h3 class="proj-name">HireChain</h3>
+            <span class="proj-go">GitHub ↗</span>
+            <p class="proj-desc">An autonomous agent labour market on Avalanche. A buyer agent checks specialist agents' on-chain reputation (ERC-8004), pays per call in USDC over x402, then grades the work and writes the score back. Built for Speedrun: Agentic Payments and presented at Team1 Builder Connect.</p>
+            <div class="proj-stack"><span>TypeScript</span><span>Avalanche</span><span>x402</span><span>ERC-8004</span></div>
+          </a>
+        </li>
+        <li class="rv">
+          <a class="proj-row" href="https://orbitstack-seven.vercel.app" target="_blank" rel="noopener" data-cat="Web · Community" data-stack="Next.js 16|Server actions|Vercel" data-where="Live ↗ orbitstack-seven.vercel.app">
+            <span class="proj-num">03</span>
+            <h3 class="proj-name">OrbitStack Website</h3>
+            <span class="proj-go">Live ↗</span>
+            <p class="proj-desc">Rebuilt the OrbitStack community site as a multi-page Next.js 16 app, replacing a client-rendered single-page app, with join and partner forms built on server actions.</p>
+            <div class="proj-stack"><span>Next.js 16</span><span>Server actions</span><span>Vercel</span></div>
+          </a>
+        </li>
+        <li class="rv">
+          <a class="proj-row" href="https://kunal-portfolio-omega.vercel.app" target="_blank" rel="noopener" data-cat="Web · Portfolio" data-stack="Next.js 16|Tailwind 4|Vercel" data-where="Live ↗ kunal-portfolio-omega.vercel.app">
+            <span class="proj-num">04</span>
+            <h3 class="proj-name">Community Portfolio</h3>
+            <span class="proj-go">Live ↗</span>
+            <p class="proj-desc">My developer-relations portfolio: every community event I've mentored, judged, hosted or spoken at, with photos and a source behind every number.</p>
+            <div class="proj-stack"><span>Next.js 16</span><span>Tailwind 4</span><span>Vercel</span></div>
+          </a>
+        </li>
+        <li class="rv">
+          <a class="proj-row" href="https://devfest-indore-card.vercel.app" target="_blank" rel="noopener" data-cat="Web · Events" data-stack="HTML|CSS|JavaScript" data-where="Live ↗ devfest-indore-card.vercel.app">
+            <span class="proj-num">05</span>
+            <h3 class="proj-name">DevFest Attendee Card</h3>
+            <span class="proj-go">Live ↗</span>
+            <p class="proj-desc">An "I'm attending" card page for DevFest Indore 2026, styled after the event's Space Edition theme.</p>
+            <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          </a>
+        </li>
+        <li class="rv">
+          <a class="proj-row" href="https://github.com/kthakur17/Sprint-Dashboard" target="_blank" rel="noopener" data-cat="Tool · Teams" data-stack="TypeScript" data-where="GitHub ↗ kthakur17/Sprint-Dashboard">
+            <span class="proj-num">06</span>
+            <h3 class="proj-name">Sprint Dashboard</h3>
+            <span class="proj-go">GitHub ↗</span>
+            <p class="proj-desc">A dashboard for tracking each developer's progress through a sprint.</p>
+            <div class="proj-stack"><span>TypeScript</span></div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="community" data-sec>
+    <div class="sec-inner">
+      <div class="lead" data-cursor>
+        <p class="label rv">Community</p>
+        <p class="h2" data-words data-alt="I spend my weekends in rooms full of laptops, and I wouldn't trade it. Some of my best debugging happens at hackathons.">Outside work I help run rooms where developers learn and build: GDG Indore since 2023, and OrbitStack, which I co-founded in November 2025.</p>
+      </div>
+
+      <div class="roles block">
+        <article class="role-card rv">
+          <span class="label">Nov 2025 – Present</span>
+          <h3>OrbitStack</h3>
+          <p class="role-title">Founding Partner</p>
+          <p>A curated community for people who build, bringing builders, founders, creators, mentors and community leaders into the same room. Meetups, hackathons, workshops, mentorship and startup connect.</p>
+          <ul>
+            <li>Partnerships, events and mentorship across AI, cybersecurity, blockchain and robotics</li>
+            <li>Hosted SLAB, the Self-Learning Agent Browser hackathon, through OrbitStack</li>
+            <li>Supporting partner for Udbhav 2026 at SAGE University</li>
+          </ul>
+          <a class="role-link" href="https://orbitstack-seven.vercel.app" target="_blank" rel="noopener">Visit OrbitStack ↗</a>
+        </article>
+        <article class="role-card rv d1">
+          <span class="label">Jan 2023 – Present</span>
+          <h3>GDG Indore</h3>
+          <p class="role-title">Core Member</p>
+          <p>Google Developer Group Indore runs cloud, AI and developer events for the city's tech community.</p>
+          <ul>
+            <li>Supporting events with 1,000+ attendees across them</li>
+            <li>Facilitating Google Cloud and AI workshops</li>
+            <li>Mentoring hackathon teams and working with speakers and volunteers</li>
+          </ul>
+          <a class="role-link" href="https://kunal-portfolio-omega.vercel.app" target="_blank" rel="noopener">Full community portfolio ↗</a>
+        </article>
+      </div>
+
+      <div class="block impact" data-cursor>
+        <div class="rv"><div class="stat-val accent" data-count="200" data-suffix="+">200+</div><p class="stat-lbl">teams registered for SLAB, which I hosted</p></div>
+        <div class="rv d1"><div class="stat-val" data-count="30" data-suffix="+">30+</div><p class="stat-lbl">teams I mentored at Build with AI 2.0</p></div>
+        <div class="rv d2"><div class="stat-val" data-count="40" data-suffix="+">40+</div><p class="stat-lbl">projects I judged at Hacktoberfest Hack Day</p></div>
+        <div class="rv d3"><div class="stat-val accent" data-count="1000" data-suffix="+">1,000+</div><p class="stat-lbl">attendees across GDG Indore events I've supported</p></div>
+      </div>
+
+      <div class="block">
+        <div class="hist-head rv"><span class="label">Recent events</span><a class="label" href="https://kunal-portfolio-omega.vercel.app" target="_blank" rel="noopener">All events ↗</a></div>
+        <ul class="hist events">
+          <li class="rv" data-cursor><span class="label accent-text">Oct 2026</span><h3>Cafe Compute Meetup: Indore</h3><span class="org">Co-host</span></li>
+          <li class="rv" data-cursor><span class="label">Oct 2026</span><h3>Hacktoberfest Hack Day Indore 2K26</h3><span class="org">Judge &amp; mentor</span></li>
+          <li class="rv" data-cursor><span class="label">Oct 2026</span><h3>Udbhav AI Sprint · “Think, Build, Sell Your AI Product”</h3><span class="org">Speaker &amp; judge</span></li>
+          <li class="rv" data-cursor><span class="label">Sep 2026</span><h3>SLAB: Self-Learning Agent Browser Hackathon</h3><span class="org">Host, through OrbitStack</span></li>
+          <li class="rv" data-cursor><span class="label">Sep 2026</span><h3>Build with AI × Code for Communities 2.0</h3><span class="org">Mentor</span></li>
+          <li class="rv" data-cursor><span class="label">Sep 2026</span><h3>SIH 2026 Internal Hackathon, Medicaps University</h3><span class="org">Jury member</span></li>
+          <li class="rv" data-cursor><span class="label">Jul 2026</span><h3>Team1 Connect</h3><span class="org">Planned and hosted</span></li>
+          <li class="rv" data-cursor><span class="label">Jul 2026</span><h3>Internal Hackathon, IIST Indore</h3><span class="org">Mentor</span></li>
+          <li class="rv" data-cursor><span class="label">Jun 2026</span><h3>Team1 Builder Connect</h3><span class="org">Presented HireChain</span></li>
         </ul>
       </div>
     </div>
@@ -378,29 +739,35 @@
     <div class="sec-inner">
       <div class="lead" data-cursor>
         <p class="label rv">Experience</p>
-        <p class="h2" data-words data-alt="Two and a half years, one promotion, a lot of code reviews, and not a single production database dropped. So far.">Two and a half years on a production SaaS platform, a promotion in July 2026, and a developer community I've helped run since 2023.</p>
+        <p class="h2" data-words data-alt="Two and a half years, one promotion, and more code reviews than I can count.">Two and a half years on a production SaaS platform, a promotion in July 2026, and two developer communities alongside.</p>
       </div>
 
       <div>
         <div class="hist-head rv"><span class="label">History</span></div>
         <ul class="hist">
           <li class="rv" data-cursor>
-            <span class="label accent">Now</span>
+            <span class="label accent-text">Now</span>
             <h3>.NET Developer</h3>
             <span class="org">Workpulse Solutions</span>
-            <p class="note">Building REST APIs and Angular front ends, leading an AI invoice-automation workflow with Azure Document Intelligence and Claude, porting legacy modules to .NET 10, and reviewing pull requests for the team.</p>
+            <p class="note">Building REST APIs and Angular front ends, leading an AI invoice-automation workflow with Azure Document Intelligence and Claude, porting legacy modules to .NET 10, and reviewing pull requests and mentoring junior developers.</p>
+          </li>
+          <li class="rv" data-cursor>
+            <span class="label">2025</span>
+            <h3>Founding Partner</h3>
+            <span class="org">OrbitStack</span>
+            <p class="note">Co-founded a curated builder community; partnerships, events, hackathons and mentorship.</p>
           </li>
           <li class="rv" data-cursor>
             <span class="label">2024</span>
             <h3>Junior .NET Developer</h3>
             <span class="org">Workpulse Solutions</span>
-            <p class="note">Delivered full-stack features across 12+ modules, including People/HR, Asset Management, Invoice Extraction, Form Builder, Audit and Knowledge.</p>
+            <p class="note">Delivered full-stack features across 12+ modules, including People, Asset Management, Invoice Extraction, Form Builder, Audit and Quiz.</p>
           </li>
           <li class="rv" data-cursor>
             <span class="label">2023</span>
             <h3>Core Member</h3>
             <span class="org">GDG Indore</span>
-            <p class="note">Supporting cloud, AI and developer events with 1,000+ attendees across them, facilitating workshops and mentoring hackathon teams.</p>
+            <p class="note">Supporting cloud, AI and developer events, facilitating workshops and mentoring hackathon teams.</p>
           </li>
           <li class="rv" data-cursor>
             <span class="label">2022</span>
@@ -427,58 +794,6 @@
     </div>
   </section>
 
-  <section class="sec" id="work" data-sec>
-    <div class="sec-inner">
-      <div class="lead" data-cursor>
-        <p class="label rv">Selected work</p>
-        <p class="h2" data-words data-alt="No public repos for these. The code belongs to my employer. The late nights belong to me.">Features I've built on a multi-tenant enterprise platform. They live behind a login, so here's what each one does.</p>
-      </div>
-
-      <ul class="proj">
-        <li class="rv">
-          <div class="proj-row" data-cat="AI · Automation" data-stack=".NET|Azure Document Intelligence|Claude|Angular|SQL Server">
-            <span class="proj-num">01</span>
-            <h3 class="proj-name">AI Invoice Extraction</h3>
-            <p class="proj-desc">Reads incoming vendor emails, extracts invoice line items with Azure Document Intelligence and Claude, and pushes structured data straight into the platform. I lead this workflow.</p>
-            <div class="proj-stack"><span>.NET</span><span>Document Intelligence</span><span>Claude</span><span>Angular</span></div>
-          </div>
-        </li>
-        <li class="rv">
-          <div class="proj-row" data-cat="Backend · Migration" data-stack=".NET 10|ASP.NET Core|EF Core|SQL Server">
-            <span class="proj-num">02</span>
-            <h3 class="proj-name">.NET 10 Migration</h3>
-            <p class="proj-desc">Porting legacy .NET Framework modules to .NET 10, rebuilding their APIs and data access on ASP.NET Core and EF Core.</p>
-            <div class="proj-stack"><span>.NET 10</span><span>ASP.NET Core</span><span>EF Core</span></div>
-          </div>
-        </li>
-        <li class="rv">
-          <div class="proj-row" data-cat="Enterprise · Multi-tenant" data-stack="ASP.NET|Angular 21|Entity Framework|SQL Server">
-            <span class="proj-num">03</span>
-            <h3 class="proj-name">Organization Settings</h3>
-            <p class="proj-desc">Per-organization configuration for an enterprise SaaS platform, with permission-aware controls surfaced consistently across the product.</p>
-            <div class="proj-stack"><span>ASP.NET</span><span>Angular 21</span><span>Entity Framework</span></div>
-          </div>
-        </li>
-        <li class="rv">
-          <div class="proj-row" data-cat="Enterprise · Access control" data-stack="C#|Web API|Angular|SQL Server">
-            <span class="proj-num">04</span>
-            <h3 class="proj-name">User Management</h3>
-            <p class="proj-desc">Accounts, roles and fine-grained permissions, so admins control exactly who can access what across a multi-tenant platform.</p>
-            <div class="proj-stack"><span>C#</span><span>Web API</span><span>Angular</span></div>
-          </div>
-        </li>
-        <li class="rv">
-          <div class="proj-row" data-cat="Backend · Search" data-stack="ASP.NET Web API|SQL Server|Angular">
-            <span class="proj-num">05</span>
-            <h3 class="proj-name">Global Search</h3>
-            <p class="proj-desc">Fast, permission-aware search that surfaces records from sales, inventory, HR and more from a single query box.</p>
-            <div class="proj-stack"><span>Web API</span><span>SQL Server</span><span>Angular</span></div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-
   <section class="sec" id="certifications" data-sec>
     <div class="sec-inner">
       <div class="lead" data-cursor>
@@ -494,9 +809,9 @@
         <li class="rv"><a href="https://verify.skilljar.com/c/c3eekmr23vrx" target="_blank" rel="noopener"><span class="cert-name">Introduction to Agent Skills</span><span class="cert-meta label">Anthropic · May 2026</span><span class="cert-go">Verify ↗</span></a></li>
         <li class="rv"><a href="https://www.linkedin.com/learning/certificates/affe606b10930eb1e005265d04857be7317bdcd9f6f2391a946d492b44b3ff64" target="_blank" rel="noopener"><span class="cert-name">Microsoft Azure AI Essentials Professional Certificate</span><span class="cert-meta label">Microsoft &amp; LinkedIn · Jun 2026</span><span class="cert-go">Verify ↗</span></a></li>
         <li class="rv"><a href="https://www.linkedin.com/learning/certificates/9018b3c03e141af963700b07436ccf0fd2ed505073499f9160d993daf4964c3c" target="_blank" rel="noopener"><span class="cert-name">Azure AI Essentials: Workloads and ML on Azure</span><span class="cert-meta label">LinkedIn Learning · Jun 2026</span><span class="cert-go">Verify ↗</span></a></li>
+        <li class="rv"><a href="https://www.credly.com/badges/2d447e6c-3d8d-4082-98c9-ace07233267e/linked_in_profile" target="_blank" rel="noopener"><span class="cert-name">Agile Explorer</span><span class="cert-meta label">IBM · Apr 2026</span><span class="cert-go">Verify ↗</span></a></li>
         <li class="rv"><div class="cert"><span class="cert-name">.NET Full Stack Developer Certification</span><span class="cert-meta label">Infosys Springboard · Jul 2026</span></div></li>
         <li class="rv"><div class="cert"><span class="cert-name">Angular</span><span class="cert-meta label">Infosys Springboard · Jul 2025</span></div></li>
-        <li class="rv"><div class="cert"><span class="cert-name">Introduction to Programming Using JavaScript</span><span class="cert-meta label">Infosys Springboard · Mar 2026</span></div></li>
       </ul>
     </div>
   </section>
@@ -504,8 +819,9 @@
   <section class="sec motto" data-sec>
     <div class="motto-bg" aria-hidden="true"></div>
     <div class="sec-inner" data-cursor>
-      <p class="label">How I work</p>
-      <p class="h1" data-split data-alt="Works on my machine. And on yours.">Messy requirements in. Clean software out.</p>
+      <p class="label">What I live by</p>
+      <p class="h1" data-split data-alt="Debug. Ship. Repeat.">Build. Learn. Connect.</p>
+      <p class="motto-sub" data-alt="Mostly in that order. Coffee in between.">Building products, communities &amp; experiences.</p>
     </div>
   </section>
 
@@ -513,13 +829,14 @@
     <div class="sec-inner">
       <div class="lead" data-cursor>
         <p class="label rv">Connect</p>
-        <p class="h2" data-words data-alt="Recruiters, founders and fellow debuggers are all welcome. I reply faster than my builds finish.">Have a role, a project, or a bug that needs fixing? Let's talk.</p>
+        <p class="h2" data-words data-alt="Recruiters, founders and fellow debuggers are all welcome. I reply faster than my builds finish.">Have a role, a project, a community event, or a bug that needs fixing? Let's talk.</p>
       </div>
 
       <div>
         <ul class="links">
           <li class="rv"><a href="https://www.linkedin.com/in/kunal-singh-a066a22a0" target="_blank" rel="noopener"><span class="big roll"><span class="roll-i"><span>LinkedIn</span><span>Let's connect</span></span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
           <li class="rv"><a href="https://github.com/kthakur17" target="_blank" rel="noopener"><span class="big roll"><span class="roll-i"><span>GitHub</span><span>kthakur17</span></span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+          <li class="rv"><a href="https://x.com/kthakur_17" target="_blank" rel="noopener"><span class="big roll"><span class="roll-i"><span>X</span><span>@kthakur_17</span></span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
           <li class="rv"><a href="mailto:singhkunalthakur89@gmail.com"><span class="big roll"><span class="roll-i"><span>Email</span><span>Say hello</span></span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
         </ul>
 
@@ -539,7 +856,7 @@
   <div class="label" id="pcardCat"></div>
   <div class="pcard-title" id="pcardTitle"></div>
   <div class="pcard-stack" id="pcardStack"></div>
-  <div class="pcard-where">@ Workpulse Solutions</div>
+  <div class="pcard-where" id="pcardWhere"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
@@ -550,6 +867,37 @@
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const esc = s => s.replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Theme: stored choice wins; otherwise follow the OS. The switch grows as a circle from the button.
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const themeBtn = document.getElementById('themeBtn');
+  const syncTheme = () => {
+    const dark = root.dataset.theme === 'dark';
+    themeMeta.content = dark ? '#0d0d0d' : '#f2ede5';
+    themeBtn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+  };
+  const applyTheme = (theme, save) => {
+    root.dataset.theme = theme;
+    if (save) { try { localStorage.setItem('theme', theme); } catch (e) {} }
+    syncTheme();
+  };
+  syncTheme();
+  themeBtn.addEventListener('click', e => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    if (!document.startViewTransition || reduce) { applyTheme(next, true); return; }
+    const r = themeBtn.getBoundingClientRect();
+    const x = e.clientX || r.left + r.width / 2, y = e.clientY || r.top + r.height / 2;
+    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    document.startViewTransition(() => applyTheme(next, true)).ready.then(() => {
+      root.animate({ clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+        { duration: 750, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', pseudoElement: '::view-transition-new(root)' });
+    });
+  });
+  matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+    let stored = null;
+    try { stored = localStorage.getItem('theme'); } catch (err) {}
+    if (!stored) { applyTheme(e.matches ? 'light' : 'dark', false); }
+  });
 
   // Reveal layer: an accent copy of each section with alternate copy, shown through a circle at the cursor.
   const sections = [...document.querySelectorAll('[data-sec]')];
@@ -562,7 +910,8 @@
       alt.inert = true;
       const clone = sec.querySelector('.sec-inner').cloneNode(true);
       clone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
-      clone.querySelectorAll('a').forEach(el => el.setAttribute('tabindex', '-1'));
+      clone.querySelectorAll('a, button').forEach(el => el.setAttribute('tabindex', '-1'));
+      clone.querySelectorAll('img').forEach(el => el.removeAttribute('loading'));
       clone.querySelectorAll('[data-alt]').forEach(el => { el.textContent = el.dataset.alt; });
       alt.appendChild(clone);
       sec.appendChild(alt);
@@ -583,8 +932,26 @@
     ).join(' ');
   });
 
+  const fmt = (v, decimals) => decimals ? v.toFixed(decimals) : Math.round(v).toLocaleString('en-US');
+  const countUp = sec => sec.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseFloat(el.dataset.count), suffix = el.dataset.suffix || '';
+    const decimals = (el.dataset.count.split('.')[1] || '').length;
+    if (reduce) { el.textContent = fmt(target, decimals) + suffix; return; }
+    const start = performance.now(), dur = 1600;
+    (function step(now) {
+      const t = Math.min(1, (now - start) / dur), eased = 1 - Math.pow(1 - t, 4);
+      el.textContent = fmt(target * eased, decimals) + suffix;
+      if (t < 1) { requestAnimationFrame(step); }
+    })(start);
+  });
+
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    entries.forEach(e => {
+      if (!e.isIntersecting) { return; }
+      e.target.classList.add('is-in');
+      countUp(e.target);
+      io.unobserve(e.target);
+    });
   }, { threshold: 0.12 });
   const watchSections = () => sections.filter(s => !s.classList.contains('hero')).forEach(s => io.observe(s));
 
@@ -649,6 +1016,7 @@
         document.getElementById('pcardCat').textContent = row.dataset.cat;
         document.getElementById('pcardTitle').textContent = row.querySelector('.proj-name').textContent;
         document.getElementById('pcardStack').innerHTML = row.dataset.stack.split('|').map(s => `<span>${esc(s)}</span>`).join('');
+        document.getElementById('pcardWhere').textContent = row.dataset.where;
         if (!pcard.classList.contains('on')) { cx = mx; cy = my; }
       }
       overProj = !!row;
@@ -664,6 +1032,7 @@
     const y = scrollY;
     if (Math.abs(y - lastY) > 4) {
       root.classList.toggle('nav-hidden', y > lastY && y > 160);
+      root.classList.toggle('nav-solid', y > 80);
       lastY = y;
     }
 
