@@ -229,15 +229,13 @@
   /* ---------- hero ---------- */
   .hero .sec-inner { min-height: 100svh; display: grid; place-items: center; text-align: center; padding-top: 120px; padding-bottom: 120px; }
   .hero-portrait {
-    position: relative;
-    width: clamp(124px, 12vw, 168px); aspect-ratio: 1; border-radius: 50%; overflow: hidden;
-    margin: 0 auto 26px; border: 2px solid var(--line);
-    box-shadow: 0 0 0 6px var(--bg), 0 0 0 7px var(--line);
-    transition: border-color 0.4s, box-shadow 0.4s;
+    width: clamp(132px, 12vw, 176px); aspect-ratio: 1; border-radius: 50%;
+    margin: 0 auto 26px; padding: 5px;
+    border: 1px solid var(--line);
+    transition: border-color 0.4s;
   }
-  .hero-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 24%; transform: scale(1.32); transform-origin: 50% 26%; transition: transform 0.8s var(--ease); }
-  .hero-portrait:hover { border-color: var(--accent); box-shadow: 0 0 0 6px var(--bg), 0 0 0 7px var(--accent); }
-  .hero-portrait:hover img { transform: scale(1.42); }
+  .hero-portrait img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: 50% 8%; }
+  .hero-portrait:hover { border-color: var(--accent); }
   .hero-name {
     font-family: var(--head); font-weight: 800; text-transform: uppercase;
     font-size: clamp(1.45rem, 3.3vw, 2.75rem); line-height: 1.1;
