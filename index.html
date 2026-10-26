@@ -185,7 +185,36 @@
   .nav .mark:hover { transform: rotate(-12deg) scale(1.06); }
   .nav-right { display: flex; align-items: center; gap: clamp(14px, 3vw, 40px); }
   .nav ul { display: flex; gap: clamp(14px, 2.6vw, 38px); list-style: none; }
-  .nav a.label { font-size: 0.72rem; }
+  .nav a.label { font-size: 0.72rem; display: inline-block; padding: 14px 0; }
+  .menu-btn { display: none; position: relative; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); }
+  .menu-btn span { position: absolute; left: 13px; right: 13px; height: 1.5px; background: currentColor; transition: transform 0.45s var(--ease), top 0.45s var(--ease); }
+  .menu-btn span:nth-child(1) { top: 17px; }
+  .menu-btn span:nth-child(2) { top: 25px; }
+  html.menu-open .menu-btn span:nth-child(1) { top: 21px; transform: rotate(45deg); }
+  html.menu-open .menu-btn span:nth-child(2) { top: 21px; transform: rotate(-45deg); }
+  html.menu-open body { overflow: hidden; }
+  html.menu-open .nav { transform: none; background: transparent; border-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+
+  .menu {
+    position: fixed; inset: 0; z-index: 45; overflow-y: auto;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 96px var(--gut) 32px; background: var(--bg);
+    visibility: hidden; clip-path: circle(0px at calc(100% - 44px) 42px);
+    transition: clip-path 0.7s var(--ease), visibility 0s linear 0.7s;
+  }
+  html.menu-open .menu { visibility: visible; clip-path: circle(150vmax at calc(100% - 44px) 42px); transition: clip-path 0.7s var(--ease); }
+  .menu ol { list-style: none; border-top: 1px solid var(--line); }
+  .menu li { border-bottom: 1px solid var(--line); opacity: 0; transform: translateY(24px); transition: opacity 0.5s var(--ease), transform 0.6s var(--ease); }
+  html.menu-open .menu li { opacity: 1; transform: none; transition-delay: calc(0.12s + var(--d) * 0.05s); }
+  .menu ol a {
+    display: flex; align-items: baseline; gap: 16px; padding: 14px 0;
+    font-family: var(--head); font-weight: 800; text-transform: uppercase;
+    font-size: clamp(2.1rem, 10vw, 3.6rem); line-height: 1; letter-spacing: -0.05em;
+  }
+  .menu ol a small { font-size: 0.68rem; letter-spacing: 0.3em; color: var(--ink-dim); }
+  .menu ol a:hover, .menu ol a:active { color: var(--accent); }
+  .menu-foot { display: flex; flex-wrap: wrap; gap: 4px 22px; margin-top: 28px; }
+  .menu-foot a { font-size: 0.7rem; letter-spacing: 0.3em; color: var(--ink-dim); padding-block: 12px; }
   .theme-btn {
     width: 44px; height: 44px; border-radius: 50%;
     border: 1px solid var(--line); display: grid; place-items: center;
@@ -320,7 +349,7 @@
   .role-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
   .role-card li { padding-left: 18px; position: relative; font-size: 0.96rem; }
   .role-card li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 8px; height: 2px; background: var(--accent); }
-  .role-link { margin-top: auto; padding-top: 8px; font-family: var(--head); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent-text); }
+  .role-link { margin-top: auto; padding: 12px 0 2px; font-family: var(--head); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent-text); }
   .role-link:hover { color: var(--accent); }
 
   .impact { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--line); }
@@ -332,7 +361,7 @@
 
   /* ---------- timeline rows (events + history) ---------- */
   .hist-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 26px; }
-  .hist-head a.label { font-size: 0.7rem; letter-spacing: 0.3em; color: var(--accent-text); }
+  .hist-head a.label { font-size: 0.7rem; letter-spacing: 0.3em; color: var(--accent-text); padding-block: 12px; }
   .hist { list-style: none; border-bottom: 1px solid var(--line); }
   .hist li {
     display: grid; grid-template-columns: 130px 1fr auto; gap: 8px 32px; align-items: baseline;
@@ -375,6 +404,7 @@
 
   .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; margin-top: clamp(64px, 8vw, 110px); }
   .foot .label { font-size: 0.7rem; letter-spacing: 0.3em; color: var(--ink-dim); }
+  .foot a.label { padding-block: 12px; }
   .foot a.label:hover { color: var(--ink); }
 
   /* ---------- responsive ---------- */
@@ -393,13 +423,11 @@
     .hist .org { text-align: left; }
     .hist .note { grid-column: 1; }
     .certs { grid-template-columns: 1fr; }
-    .nav .opt { display: none; }
+    .nav ul { display: none; }
+    .menu-btn { display: block; }
   }
   @media (max-width: 560px) {
     .label { letter-spacing: 0.3em; }
-    .nav ul { gap: 12px; }
-    .nav a.label { font-size: 0.64rem; letter-spacing: 0.2em; }
-    .nav .mark, .theme-btn { width: 40px; height: 40px; }
     .nav-right { gap: 12px; }
     .proj-row { grid-template-columns: 1fr; }
     .proj-num { padding-top: 0; }
@@ -428,16 +456,34 @@
     <ul>
       <li><a class="label" href="#about"><span class="roll"><span class="roll-i"><span>About</span><span>About</span></span></span></a></li>
       <li><a class="label" href="#work"><span class="roll"><span class="roll-i"><span>Work</span><span>Work</span></span></span></a></li>
-      <li class="opt"><a class="label" href="#projects"><span class="roll"><span class="roll-i"><span>Projects</span><span>Projects</span></span></span></a></li>
-      <li class="opt"><a class="label" href="#community"><span class="roll"><span class="roll-i"><span>Community</span><span>Community</span></span></span></a></li>
+      <li><a class="label" href="#projects"><span class="roll"><span class="roll-i"><span>Projects</span><span>Projects</span></span></span></a></li>
+      <li><a class="label" href="#community"><span class="roll"><span class="roll-i"><span>Community</span><span>Community</span></span></span></a></li>
       <li><a class="label" href="#contact"><span class="roll"><span class="roll-i"><span>Contact</span><span>Contact</span></span></span></a></li>
     </ul>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch colour theme">
       <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" /><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" /></svg>
       <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1Z" /></svg>
     </button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
   </div>
 </nav>
+
+<div class="menu" id="menu" aria-hidden="true" inert>
+  <ol>
+    <li style="--d:0"><a href="#about"><small>01</small>About</a></li>
+    <li style="--d:1"><a href="#work"><small>02</small>Workpulse</a></li>
+    <li style="--d:2"><a href="#projects"><small>03</small>Projects</a></li>
+    <li style="--d:3"><a href="#community"><small>04</small>Community</a></li>
+    <li style="--d:4"><a href="#experience"><small>05</small>Experience</a></li>
+    <li style="--d:5"><a href="#contact"><small>06</small>Contact</a></li>
+  </ol>
+  <div class="menu-foot">
+    <a class="label" href="https://www.linkedin.com/in/kunal-singh-a066a22a0" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a class="label" href="https://github.com/kthakur17" target="_blank" rel="noopener">GitHub ↗</a>
+    <a class="label" href="https://x.com/kthakur_17" target="_blank" rel="noopener">X ↗</a>
+    <a class="label" href="mailto:singhkunalthakur89@gmail.com">Email ↗</a>
+  </div>
+</div>
 
 <main>
 
@@ -958,6 +1004,26 @@
     lenis = new Lenis({ lerp: 0.1 });
     lenis.stop();
   }
+
+  // Mobile menu. Registered before the anchor handler so smooth scrolling is resumed before it scrolls.
+  const menuBtn = document.getElementById('menuBtn');
+  const menu = document.getElementById('menu');
+  const setMenu = open => {
+    root.classList.toggle('menu-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.setAttribute('aria-hidden', String(!open));
+    menu.inert = !open;
+    if (lenis) { open ? lenis.stop() : lenis.start(); }
+    if (open) { root.classList.remove('nav-hidden'); menu.querySelector('a').focus({ preventScroll: true }); }
+  };
+  menuBtn.addEventListener('click', () => setMenu(!root.classList.contains('menu-open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && root.classList.contains('menu-open')) { setMenu(false); menuBtn.focus(); }
+  });
+  matchMedia('(min-width: 861px)').addEventListener('change', e => { if (e.matches) { setMenu(false); } });
+
   document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
     const target = document.querySelector(a.getAttribute('href'));
     if (!target || !lenis) { return; }
