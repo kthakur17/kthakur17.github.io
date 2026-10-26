@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Kunal Singh — Software Engineer</title>
 <meta name="description" content="Kunal Singh, Software Engineer in Indore, India. Full-stack .NET, Angular, SQL Server, Azure and AI integration with Claude. Community builder, hackathon mentor and judge, building OrbitStack." />
-<meta name="theme-color" content="#0d0d0d" />
-<meta name="color-scheme" content="dark light" />
+<meta name="theme-color" content="#f2ede5" />
+<meta name="color-scheme" content="light dark" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Kunal Singh — Software Engineer" />
 <meta property="og:description" content="Build. Learn. Connect. Full-stack .NET, AI and community from Indore, India." />
@@ -20,9 +20,7 @@
   (function () {
     var root = document.documentElement, theme = null;
     try { theme = localStorage.getItem('theme'); } catch (e) {}
-    if (theme !== 'light' && theme !== 'dark') {
-      theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    }
+    if (theme !== 'light' && theme !== 'dark') { theme = 'light'; }
     root.setAttribute('data-theme', theme);
     root.classList.add('js', 'is-loading');
     setTimeout(function () { if (!window.__ksReady) { root.classList.remove('js', 'is-loading'); } }, 6000);
@@ -31,17 +29,7 @@
 <style>
   @property --r { syntax: '<length>'; inherits: true; initial-value: 0px; }
 
-  :root, :root[data-theme="dark"] {
-    --bg: #0d0d0d;
-    --ink: #b7ab98;
-    --ink-dim: rgba(183, 171, 152, 0.58);
-    --line: rgba(183, 171, 152, 0.18);
-    --card: rgba(183, 171, 152, 0.05);
-    --accent: #eb5939;
-    --accent-text: #eb5939;
-    --on-accent: #0d0d0d;
-  }
-  :root[data-theme="light"] {
+  :root, :root[data-theme="light"] {
     --bg: #f2ede5;
     --ink: #1c1916;
     --ink-dim: rgba(28, 25, 22, 0.64);
@@ -51,11 +39,15 @@
     --accent-text: #b63a1c;
     --on-accent: #0d0d0d;
   }
-  @media (prefers-color-scheme: light) {
-    :root:not([data-theme]) {
-      --bg: #f2ede5; --ink: #1c1916; --ink-dim: rgba(28, 25, 22, 0.64); --line: rgba(28, 25, 22, 0.14);
-      --card: rgba(28, 25, 22, 0.045); --accent: #e0512f; --accent-text: #b63a1c;
-    }
+  :root[data-theme="dark"] {
+    --bg: #0d0d0d;
+    --ink: #b7ab98;
+    --ink-dim: rgba(183, 171, 152, 0.58);
+    --line: rgba(183, 171, 152, 0.18);
+    --card: rgba(183, 171, 152, 0.05);
+    --accent: #eb5939;
+    --accent-text: #eb5939;
+    --on-accent: #0d0d0d;
   }
   :root {
     --head: 'Urbanist', 'Avant Garde', sans-serif;
@@ -66,7 +58,7 @@
     --r: 10px;
     transition: --r 0.5s var(--ease);
   }
-  html.cursor-big { --r: 160px; }
+  html.cursor-big { --r: 90px; }
   html.cursor-link { --r: 26px; }
   html.cursor-off { --r: 0px; }
 
@@ -786,7 +778,7 @@
           </li>
           <li class="rv" data-cursor>
             <span class="label">2019–23</span>
-            <h3>B.E., Information Technology</h3>
+            <h3>B.Tech, Information Technology</h3>
             <span class="org">SVCE Indore · Grade A+</span>
           </li>
         </ul>
@@ -893,29 +885,35 @@
         { duration: 750, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', pseudoElement: '::view-transition-new(root)' });
     });
   });
-  matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
-    let stored = null;
-    try { stored = localStorage.getItem('theme'); } catch (err) {}
-    if (!stored) { applyTheme(e.matches ? 'light' : 'dark', false); }
-  });
-
   // Reveal layer: an accent copy of each section with alternate copy, shown through a circle at the cursor.
+  // Each alternate line is pinned to its original's height so the copy never drifts out of line.
   const sections = [...document.querySelectorAll('[data-sec]')];
+  const altTwins = new Map();
   if (fine) {
     root.classList.add('has-cursor');
     sections.forEach(sec => {
+      const inner = sec.querySelector('.sec-inner');
+      const originals = inner.querySelectorAll('[data-alt]');
       const alt = document.createElement('div');
       alt.className = 'sec-alt';
       alt.setAttribute('aria-hidden', 'true');
       alt.inert = true;
-      const clone = sec.querySelector('.sec-inner').cloneNode(true);
+      const clone = inner.cloneNode(true);
       clone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
       clone.querySelectorAll('a, button').forEach(el => el.setAttribute('tabindex', '-1'));
       clone.querySelectorAll('img').forEach(el => el.removeAttribute('loading'));
-      clone.querySelectorAll('[data-alt]').forEach(el => { el.textContent = el.dataset.alt; });
+      clone.querySelectorAll('[data-alt]').forEach((el, i) => {
+        el.textContent = el.dataset.alt;
+        el.style.overflow = 'hidden';
+        altTwins.set(originals[i], el);
+      });
       alt.appendChild(clone);
       sec.appendChild(alt);
     });
+    const pin = new ResizeObserver(entries => entries.forEach(en => {
+      altTwins.get(en.target).style.height = en.target.offsetHeight + 'px';
+    }));
+    altTwins.forEach((twin, original) => pin.observe(original));
   }
 
   document.querySelectorAll('[data-words]').forEach(el => {
